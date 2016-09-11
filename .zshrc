@@ -103,9 +103,30 @@ alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
+
+# adi's alias
 alias gpo='git push origin'
 alias dirhide='defaults write com.apple.finder AppleShowAllFiles -boolean false ; killall Finder'
 alias dirshow='defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder'
+alias c='cat'
+#alias ggrep='git grep -n'
+ggrep() {
+  git grep -n $1 -- './*' ':(exclude)lib/*'
+}
 
+gmvemail() {
+  export OLD_GIT_EMAIL=$1
+  export NEW_GIT_EMAIL=$2
+  git filter-branch --commit-filter '
+    if [ "$GIT_AUTHOR_EMAIL" = "$OLD_GIT_EMAIL" ];
+    then
+            GIT_AUTHOR_EMAIL="$NEW_GIT_EMAIL";
+            git commit-tree "$@";
+    else
+            git commit-tree "$@";
+    fi' HEAD
+  BRANCH_NAME=$(git symbolic-ref --short HEAD)
+  git update-ref -d refs/original/refs/heads/${BRANCH_NAME}
+}
 source /usr/local/opt/nvm/nvm.sh
 
