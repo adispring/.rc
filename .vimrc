@@ -24,6 +24,7 @@ vnoremap > >gv
 "打开语法高亮
 syntax on
 filetype on
+filetype plugin on
 au BufNewFile,BufRead *.ftl set filetype=html
 
 "背景主题相关
@@ -69,6 +70,7 @@ map <leader>r :!node --harmony %<CR>
 "映射Ctrl+F12键为行号的开关
 map <leader>d :set number!<CR>
 
+map <leader>g :edit<CR>
 "映射ESC 退出
 "imap <C-O> <Esc>
 
@@ -120,7 +122,10 @@ function! BundlesInit()
             \'vim-nerdtree-tabs' : 'github.com/jistr/vim-nerdtree-tabs.git',
             \'vim-javascript-syntax': 'github.com/jelera/vim-javascript-syntax.git',
             \'nerdcommenter': 'github.com/scrooloose/nerdcommenter.git',
-            \'supertab' : 'github.com/ervandew/supertab.git'
+            \'supertab' : 'github.com/ervandew/supertab.git',
+            \'bats.vim' : 'git@github.com:vim-scripts/bats.vim.git',
+            \'smartim' : 'git@github.com:ybian/smartim.git',
+            \'vim-instant-markdown': 'github.com/suan/vim-instant-markdown.git'
         \}
     let bundleDir = $HOME . '/.vim/bundle/'
     if !isdirectory(bundleDir)
