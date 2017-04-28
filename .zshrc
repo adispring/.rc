@@ -49,7 +49,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump xcode ruby gem vim)
+plugins=(git autojump xcode ruby gem vim python)
 
 # User configuration
 
@@ -109,24 +109,24 @@ alias gpo='git push origin'
 alias dirhide='defaults write com.apple.finder AppleShowAllFiles -boolean false ; killall Finder'
 alias dirshow='defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder'
 alias c='cat'
+alias emacs="/usr/local/Cellar/emacs/25.1/Emacs.app/Contents/MacOS/Emacs -nw"
+alias jumper='ssh wangzengdi@jumper.sankuai.com'
 #alias ggrep='git grep -n'
 ggrep() {
   git grep -n $1 -- './*' ':(exclude)lib/*'
 }
 
-gmvemail() {
-  export OLD_GIT_EMAIL=$1
-  export NEW_GIT_EMAIL=$2
-  git filter-branch --commit-filter '
-    if [ "$GIT_AUTHOR_EMAIL" = "$OLD_GIT_EMAIL" ];
+gmve() {
+  OLD_EMAIL=$1 NEW_EMAIL=$2 git filter-branch --commit-filter '
+    if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ];
     then
-            GIT_AUTHOR_EMAIL="$NEW_GIT_EMAIL";
-            git commit-tree "$@";
+      GIT_AUTHOR_EMAIL="$NEW_EMAIL";
+      git commit-tree "$@";
     else
-            git commit-tree "$@";
+      git commit-tree "$@";
     fi' HEAD
-  BRANCH_NAME=$(git symbolic-ref --short HEAD)
-  git update-ref -d refs/original/refs/heads/${BRANCH_NAME}
+  git update-ref -d refs/original/refs/heads/$(git symbolic-ref --short HEAD)
 }
+
 source /usr/local/opt/nvm/nvm.sh
 
