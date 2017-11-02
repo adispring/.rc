@@ -55,12 +55,18 @@ plugins=(git autojump xcode ruby gem vim python)
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=/usr/local/share/npm/bin:$PATH
+
+export M2_HOME=/Users/wangzengdi/apache-maven-3.5.0
+export PATH=$PATH:$M2_HOME/bin
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export TERM=xterm-256color
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -86,6 +92,7 @@ source $ZSH/oh-my-zsh.sh
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 export NVM_DIR=~/.nvm
 alias cls='clear'
+alias clls='clear && ls'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -lah'
@@ -94,8 +101,8 @@ alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
 alias -s html=v   # 在命令行直接输入后缀为 html 的文件名，会在 TextMate 中打开
 alias -s rb=v     # 在命令行直接输入 ruby 文件，会在 TextMate 中打开
-alias -s py=v       # 在命令行直接输入 python 文件，会用 vm 中打开，以下类似
 alias -s js=v
+alias -s py=v       # 在命令行直接输入 python 文件，会用 vm 中打开，以下类似
 alias -s c=v
 alias -s java=v
 alias -s txt=v
@@ -109,9 +116,10 @@ alias gpo='git push origin'
 alias dirhide='defaults write com.apple.finder AppleShowAllFiles -boolean false ; killall Finder'
 alias dirshow='defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder'
 alias c='cat'
-alias emacs="/usr/local/Cellar/emacs/25.1/Emacs.app/Contents/MacOS/Emacs -nw"
+alias emacs="/usr/local/Cellar/emacs-plus/25.3/Emacs.app/Contents/MacOS/Emacs -nw"
+alias thrift-parser="node /Users/wangzengdi/JavaScript/Github/thrift-parser/bin/thrift-parser.js"
 alias jumper='ssh wangzengdi@jumper.sankuai.com'
-#alias ggrep='git grep -n'
+alias groot='cd $(git rev-parse --show-toplevel)'
 ggrep() {
   git grep -n $1 -- './*' ':(exclude)lib/*'
 }
@@ -128,5 +136,29 @@ gmve() {
   git update-ref -d refs/original/refs/heads/$(git symbolic-ref --short HEAD)
 }
 
+em() {
+  emacsclient -t $1 || (emacs --daemon && emacsclient -t $1)
+}
+function exists { which $1 &> /dev/null }
+
+function light() {
+    cat $2 | highlight -O rtf --syntax $1 --font Inconsolata --style solarized-dark --font-size 24 | pbcopy
+}
+
 source /usr/local/opt/nvm/nvm.sh
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if exists percol; then
+    function percol_select_history() {
+        local tac
+        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+        BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
+        CURSOR=$#BUFFER         # move cursor
+        zle -R -c               # refresh
+    }
+
+    zle -N percol_select_history
+    bindkey '^R' percol_select_history
+fi
