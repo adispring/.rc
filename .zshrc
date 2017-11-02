@@ -120,6 +120,7 @@ alias emacs="/usr/local/Cellar/emacs-plus/25.3/Emacs.app/Contents/MacOS/Emacs -n
 alias thrift-parser="node /Users/wangzengdi/JavaScript/Github/thrift-parser/bin/thrift-parser.js"
 alias jumper='ssh wangzengdi@jumper.sankuai.com'
 alias groot='cd $(git rev-parse --show-toplevel)'
+alias ag='ag --path-to-ignore ~/.agignore'
 ggrep() {
   git grep -n $1 -- './*' ':(exclude)lib/*'
 }
