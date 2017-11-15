@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/wangzengdi/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -56,7 +56,7 @@ plugins=(git autojump xcode ruby gem vim python)
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=/usr/local/share/npm/bin:$PATH
 
-export M2_HOME=/Users/wangzengdi/apache-maven-3.5.0
+export M2_HOME=~/apache-maven-3.5.0
 export PATH=$PATH:$M2_HOME/bin
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -117,7 +117,7 @@ alias dirhide='defaults write com.apple.finder AppleShowAllFiles -boolean false 
 alias dirshow='defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder'
 alias c='cat'
 alias emacs="/usr/local/Cellar/emacs-plus/25.3/Emacs.app/Contents/MacOS/Emacs -nw"
-alias thrift-parser="node /Users/wangzengdi/JavaScript/Github/thrift-parser/bin/thrift-parser.js"
+alias thrift-parser="node ~/JavaScript/Github/thrift-parser/bin/thrift-parser.js"
 alias jumper='ssh wangzengdi@jumper.sankuai.com'
 alias groot='cd $(git rev-parse --show-toplevel)'
 alias ag='ag --path-to-ignore ~/.agignore'
