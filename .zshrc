@@ -116,11 +116,15 @@ alias gpo='git push origin'
 alias dirhide='defaults write com.apple.finder AppleShowAllFiles -boolean false ; killall Finder'
 alias dirshow='defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder'
 alias c='cat'
-alias emacs="/usr/local/Cellar/emacs-plus/25.3/Emacs.app/Contents/MacOS/Emacs -nw"
+# alias emacs="/usr/local/Cellar/emacs-plus/25.3/Emacs.app/Contents/MacOS/Emacs -nw"
 alias thrift-parser="node ~/JavaScript/Github/thrift-parser/bin/thrift-parser.js"
 alias jumper='ssh wangzengdi@jumper.sankuai.com'
 alias groot='cd $(git rev-parse --show-toplevel)'
+
+# remap terminal tools with customized arguments
+alias emacs="emacs -nw"
 alias ag='ag --path-to-ignore ~/.agignore'
+
 ggrep() {
   git grep -n $1 -- './*' ':(exclude)lib/*'
 }
@@ -147,7 +151,6 @@ function light() {
 }
 
 source /usr/local/opt/nvm/nvm.sh
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
