@@ -53,8 +53,8 @@ plugins=(git autojump xcode ruby gem vim python)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH=/usr/local/share/npm/bin:$PATH
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH=$PATH:/usr/local/share/npm/bin
 
 export M2_HOME=~/apache-maven-3.5.0
 export PATH=$PATH:$M2_HOME/bin
@@ -166,3 +166,6 @@ if exists percol; then
     zle -N percol_select_history
     bindkey '^R' percol_select_history
 fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
