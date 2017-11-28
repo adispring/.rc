@@ -150,7 +150,7 @@ function light() {
     cat $2 | highlight -O rtf --syntax $1 --font Inconsolata --style solarized-dark --font-size 24 | pbcopy
 }
 
-source /usr/local/opt/nvm/nvm.sh
+# source /usr/local/opt/nvm/nvm.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
