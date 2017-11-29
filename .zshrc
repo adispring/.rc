@@ -90,7 +90,6 @@ export TERM=xterm-256color
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
-export NVM_DIR=~/.nvm
 alias cls='clear'
 alias clls='clear && ls'
 alias ll='ls -l'
@@ -151,6 +150,8 @@ function light() {
 }
 
 # source /usr/local/opt/nvm/nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
