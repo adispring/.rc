@@ -149,10 +149,6 @@ function light() {
     cat $2 | highlight -O rtf --syntax $1 --font Inconsolata --style solarized-dark --font-size 24 | pbcopy
 }
 
-# source /usr/local/opt/nvm/nvm.sh
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if exists percol; then
@@ -167,6 +163,10 @@ if exists percol; then
     zle -N percol_select_history
     bindkey '^R' percol_select_history
 fi
+
+# source /usr/local/opt/nvm/nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
