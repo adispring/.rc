@@ -117,7 +117,6 @@ alias dirshow='defaults write com.apple.finder AppleShowAllFiles -boolean true ;
 alias c='cat'
 # alias emacs="/usr/local/Cellar/emacs-plus/25.3/Emacs.app/Contents/MacOS/Emacs -nw"
 alias thrift-parser="node ~/JavaScript/Github/thrift-parser/bin/thrift-parser.js"
-alias jumper='ssh wangzengdi@jumper.sankuai.com'
 alias groot='cd $(git rev-parse --show-toplevel)'
 
 # remap terminal tools with customized arguments
