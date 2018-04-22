@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dotfiles=(".zshrc" ".bashrc" ".spacemacs.d")
+dotfiles=(".zshrc" ".bashrc")
 for file in ${dotfiles[@]}
 do
     cp -rf "$HOME/$file" "./$file"
